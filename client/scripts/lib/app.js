@@ -3,7 +3,8 @@
  */
 angular.module('Whatsapp', [
         'angular-meteor',
-        'ionic'
+        'ionic',
+        "accounts.ui"
     ]);
 
 if (Meteor.isCordova) {
@@ -17,3 +18,7 @@ else {
 function onReady() {
     angular.bootstrap(document, ['Whatsapp']);
 }
+
+Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+});

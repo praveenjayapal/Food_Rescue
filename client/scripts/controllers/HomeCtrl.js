@@ -7,5 +7,5 @@ angular
 
 function HomeCtrl($scope, $reactive) {
     $reactive(this).attach($scope);
-   this.home_data = "Welcome"
+    this.home_data = "Welcome"
 }

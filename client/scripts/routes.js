@@ -13,7 +13,6 @@ else {
         .config(web_config);
 }
 
-
 function mobile_config($stateProvider, $urlRouterProvider) {
     // Conditional to check if the app should be a mobile app.
     // Or a web browser app.
@@ -48,12 +47,18 @@ function mobile_config($stateProvider, $urlRouterProvider) {
 }
 
 function web_config($stateProvider, $urlRouterProvider) {
+
     $stateProvider
         .state('tab', {
             url: '/tab',
             abstract: true,
-            templateUrl: 'client/templates/mobile/tabs.html'
-        })
+            templateUrl: 'client/templates/mobile/tabs.html',
+            resolve: {
+                "currentUser": function ($meteor) {
+                    return $meteor.requireUser();
+                }
+            }
+            })
 
         .state('tab.chats', {
             url: '/chats',
@@ -62,8 +67,13 @@ function web_config($stateProvider, $urlRouterProvider) {
                     templateUrl: 'client/templates/mobile/chats.html',
                     controller: 'ChatsCtrl as chats'
                 }
+            },
+            resolve: {
+                "currentUser": function ($meteor) {
+                    return $meteor.requireUser();
+                }
             }
-        })
+            })
 
         .state('tab.home', {
             url: '/home',
@@ -72,9 +82,34 @@ function web_config($stateProvider, $urlRouterProvider) {
                     templateUrl: 'client/templates/mobile/home.html',
                     controller: 'HomeCtrl as home'
                 }
+            },
+            resolve: {
+                "currentUser": function ($meteor) {
+                    return $meteor.requireUser();
+                }
             }
+            })
+
+        .state('tab.bob', {
+            url: '/bob',
+            views: {
+                'tab-home': {
+                    templateUrl: 'client/templates/mobile/home.html',
+                    controller: 'HomeCtrl as home'
+                }
+            },
+            resolve: {
+                "currentUser": function ($meteor) {
+                    return $meteor.requireUser();
+                }
+            }
+        })
+
+        .state('login', {
+            url: '/login',
+            templateUrl: 'client/templates/mobile/login.html',
+            controller: 'LoginCtrl as logger'
         });
 
     $urlRouterProvider.otherwise('tab/home');
-
 }
