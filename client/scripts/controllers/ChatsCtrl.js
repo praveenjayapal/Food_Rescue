@@ -1,6 +1,8 @@
 /**
  * Created by Dean on 3/1/2016.
  */
+Meteor.subscribe('pickUpClients');
+
 angular
     .module('Whatsapp')
     .controller('ChatsCtrl', ChatsCtrl);

@@ -14,4 +14,3 @@ function run($rootScope, $state) {
         }
     });
 }
-

@@ -1,7 +1,10 @@
 # TODO Feature list #
 #### General
-- [ ] Create Accounts
-- [ ] Create Account user levels (Admin, Secret, Standard)
+- [ ] Accounts
+    - [x] Create Accounts
+    - [ ] Add auto redirect after login
+    - [ ] Add appropriate Login Form.
+    - [ ] Create Account user levels (Admin, Secret, Standard)
     
 #### Admin / web interface
 - [ ] Create jobs management area - Database collection
